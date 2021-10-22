@@ -1,2 +1,4 @@
-# web-231
-A repository for WEB231-346A Enterprise JavaScript I
+# WEB 231 Enterprise JavaScript I
+## Contributors
+* Professor Richard Krasso
+* Laura Kendl
