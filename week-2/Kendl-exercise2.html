@@ -1,3 +1,14 @@
+<!--
+============================================
+; Title: Exercise 2.2
+; Author: Professor Krasso 
+; Date: 29 October 2021
+; Modified By: Laura Kendl
+; Description: This program demonstrates 
+; how to add JavaScript to an HTML page. 
+;===========================================
+-->
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -35,19 +46,14 @@
             <!-- Internal JS -->
 
             <script>
-                /* Resources:
 
-                https://www.w3schools.com/js/tryit.asp?filename=tryjs_alert
-                
-                */
-
-                // Calls inner.html text to the <p id="txtMyWorld">
+                // Calls inner.html text to the "txtMyWorld" p tag in HTML body
                 document.getElementById('txtMyWorld').innerHTML = "You are now in Kendl's World!";
                 
-                // Invokes btnMyCourse Function for course alert
+                // Invokes btnMyCourse Function to prompt a window alert in HTML body
                 function btnMyCourse() {
-                    alert("WEB 231 - Enterprise JavaScript I")
-                 };
+                  alert("WEB 231 - Enterprise JavaScript I")
+                };
           
             </script>
 
