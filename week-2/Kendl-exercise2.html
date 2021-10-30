@@ -22,30 +22,36 @@
 
             <h1 class="app-header">Exercise 2.2 - Hello JavaScript</h1>
 
-            <p id="txtMyWorld">You are now in Kendl's world!</p>
+            <button type="button" onclick="btnMyCourse()" id="btnMyCourse">What course am I taking?</button>
 
-            <button type="button" onclick="myFunction()">What course am I taking?</button>
+            <p id="txtMyWorld"></p>
 
             <p>
             
-            <a href="index.html" class="return-home">Return</a>
+            <a href="../index.html" class="return-home">Return</a>
 
             </p>
- 
-            <script>
-                /* Opening Programmer's Comment
 
-                Resources:
+            <!-- Internal JS -->
+
+            <script>
+                /* Resources:
 
                 https://www.w3schools.com/js/tryit.asp?filename=tryjs_alert
                 
                 */
+
+                // Calls inner.html text to the <p id="txtMyWorld">
+                document.getElementById('txtMyWorld').innerHTML = "You are now in Kendl's World!";
                 
-                function myFunction() {
+                // Invokes btnMyCourse Function for course alert
+                function btnMyCourse() {
                     alert("WEB 231 - Enterprise JavaScript I")
-                }
+                 };
+          
             </script>
 
+ 
 
 
 
