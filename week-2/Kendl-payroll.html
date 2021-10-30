@@ -103,10 +103,13 @@
        const addressMartin = '1725 Slough Ave';
        document.getElementById("txtAddressMartin").innerHTML = addressMartin;   
         
-       // Hire Dates: Declares constants for Hire Dates and returns a date as a string
+       // Hire Dates: Declares constants for Hire Dates and returns a date as a string binds to innerHTML with their associated IDs
        const hireDateScott = new Date().toLocaleDateString("en-US");
+       document.getElementById("txtHireDateScott").innerHTML = hireDateScott;  
        const hireDateSchrute = new Date().toLocaleDateString("en-US");
+       document.getElementById("txtHireDateSchrute").innerHTML = hireDateSchrute;  
        const hireDateMartin = new Date().toLocaleDateString("en-US");
+       document.getElementById("txtHireDateMartin").innerHTML = hireDateMartin;  
     
        // Pay Rates: Declares constants for Pay Rates, formats to one decimal place and binds to innerHTML with their associated IDs
        const payRateScott = 25.999.toFixed(1);
