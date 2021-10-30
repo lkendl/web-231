@@ -65,16 +65,16 @@
 
 
 /* Exercise 2.2 */
-.return-home {
+.return-home:link {
     color: #4F3674;
     text-decoration: none;
 }
 
-a.return-home:hover {
+.return-home:hover {
     background-color: #D6A800;
     color: #4F3674;
 } 
 
-a.return-home:visited {
+.return-home:visited {
     color: #3C275A;
 }
