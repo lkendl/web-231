@@ -51,11 +51,10 @@
                 // Calls inner.html text to the "txtMyWorld" p tag in HTML body
                 document.getElementById('txtMyWorld').innerHTML = "You are now in Kendl's World!";
                 
-                // Invokes btnMyCourse Function to prompt a window alert in HTML body
-                function btnMyCourse() {
+                // Clicking addEventListener will prompt a window alert in HTML body
+                document.getElementById("btnMyCourse").addEventListener("click", function() {
                   alert("WEB 231 - Enterprise JavaScript I")
-                };
-          
+                }); 
             </script>
 
  
