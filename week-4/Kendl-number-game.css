@@ -1,0 +1,38 @@
+/*
+============================================
+; Title: Kendl-number-game.css
+; Author: Professor Krasso 
+; Date: 10 November 2021
+; Modified By: Laura Kendl
+; Description: This is the css for
+; the number game assignment.
+;===========================================
+*/
+#container {
+    padding: 10px;
+}
+
+#form-example {
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+#form-results-example {
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+.app-header {
+    text-align: center;
+    font-size: 28px;
+}
+
+#results {
+    text-align: center;
+    font-size: 28px;
+}
+
+#results-container {
+    display: flex;
+    justify-content: center;
+}
