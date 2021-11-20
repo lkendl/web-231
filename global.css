@@ -2,7 +2,7 @@
 ============================================
 ; Title: global.css
 ; Author: Professor Krasso 
-; Date: 4 November 2021
+; Date: 15 November 2021
 ; Modified By: Laura Kendl
 ; Description: This is the global.css for
 ; all assignments.
@@ -103,4 +103,14 @@ h1 {
 #card-example {
     width: 600px;
     margin: 3% auto 0;
+}
+
+/* Assignment 5.2 */
+.drop-down-menu {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }

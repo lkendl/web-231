@@ -1,0 +1,168 @@
+<!--
+============================================
+; Title: Assignment 5.2
+; Author: Professor Krasso 
+; Date: 19 November 2021
+; Modified By: Laura Kendl
+; Description: This program demonstrates 
+; how to use JavaScript control statements by
+; practicing loops with a simple number game.
+; Resources: 
+; W3schools: https://www.w3schools.com/tags/tag_select.asp (HTML <select> Tag)
+; W3schools: https://www.w3schools.com/jsref/jsref_dowhile.asp (JavaScript do/while Statement)
+; W3schools: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_select_get (How to access a Select element)
+; All Things JavaScript, LLC: https://www.youtube.com/watch?v=ngS5aZVmqok (Computing a Fibonacci Sequence)
+; Tutorialsmade: https://www.tutorialsmade.com/javascript-to-print-even-numbers-within-a-range/ (JavaScript Program to Print Even Numbers Within a Range)
+; Scripting Master: http://www.scriptingmaster.com/javascript/while-loop.asp (While loop for odd values)
+;===========================================
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>WEB 231 - Enterprise JavaScript I</title>
+
+        <!-- Link to External Stylesheet -->
+
+        <link rel="stylesheet" type="text/css" href="../global.css">
+
+        <link rel="stylesheet" type="text/css" href="Kendl-sequence-game.css">
+
+        <!-- Google Font Kit for Oswald -->
+
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <div id="container">
+
+            <h1 class="app-header">Welcome to the sequence game!</h1>
+
+            <div id="card-example">
+                <div class="card">
+                    <div class="card-title">Sequence Selection Form</div>
+                        <div class="card-content">
+                            <div class="form">
+                                <div class="form-field">
+                            
+                                    <label for="sequence">Choose a number sequence:</label>
+                                    
+                                    <select id="sequence" class="drop-down-menu">
+                                        <option id="select" value="select">--Select--</option>
+                                        <option id="fibonacci" value="fibonacci">Fibonacci Sequence</option>
+                                        <option id="even" value="even">Even Numbers</option>
+                                        <option id="odd" value="odd">Odd Numbers</option>
+
+                                    </select>                       
+                                
+
+                                <div class="form-field">
+                                <!--Register onclick event-->
+                                    <button id="btnDisplaySequence" onclick="function sequenceGame()" class="btn btn-primary full-width">Display Sequence</button>
+                                </div>
+
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="form-results-example">
+                <div class="card">
+                    <div class="card-title">Sequence Results</div>
+                    <div class="card-content" id="results-container">
+                        <span id="results"></span>
+                    </div>
+
+                    </div>
+                    <p>
+                        <a href="../index.html" class="return-home">Return</a>
+                    </p>
+            
+            
+                </div>
+             </div>
+
+
+<!-- Internal JS -->
+
+    <script>
+
+//Execute sequenceGame function when user clicks btnDisplaySequence
+document.getElementById("btnDisplaySequence").onclick = function sequenceGame() {
+
+//Define variables for user input options
+    let choice = document.getElementById("sequence").value;
+    let even = document.getElementById("even").value;
+    let odd = document.getElementById("odd").value;
+    let fibonacci = document.getElementById("fibonacci").value;
+    let select = document.getElementById("select").value;
+
+//EVEN DO/WHILE LOOP | Compare user input and against string values with if/else statements
+    if (choice == even) {
+//Define variable to display While loop results
+        let evenText = "";
+//Define variable value for While loop        
+        let num1 = 2;      
+//Run Do loop while num1 is less than 20 
+        do {
+            evenText += num1 + ", ";
+            num1 = num1 + 2;
+        }
+        while (num1 < 20);
+        //Display the string value of fibonacciSequenceText within the card-content div
+        document.getElementById("results").innerHTML = evenText.slice(0,-2);
+    }
+//ODD WHILE LOOP
+    else if (choice == odd) {
+//Define variable to display While loop results
+        let oddText = "";
+//Define variable value for While loop   
+        let num1 = 1;
+//Run loop while num1 is less than 20 
+        while (num1 < 20) {
+        oddText += num1 + ", ";
+//Increment value by 2 with each iteration
+        num1 += 2;
+//Display the string value of oddText within the card-content div
+        document.getElementById("results").innerHTML = oddText.slice(0,-2);
+    }
+}
+//FIBONACCI WHILE LOOP
+    else if (choice == fibonacci) {
+  
+//Define variable to display While loop results
+        let fibonacciSequenceText = "";
+
+//Define variable values for While loop        
+        let num1 = 0, num2 = 1, next = 0; 
+        
+//Run loop while num1 is less than 40 
+        while (num1 < 40) {
+//Determine next number in sequence
+            fibonacciSequenceText += num1 + ", ";
+            next = num1 + num2;
+            num1 = num2;
+            num2 = next;
+        }
+//Display the string value of fibonacciSequenceText within the card-content div
+        document.getElementById("results").innerHTML = fibonacciSequenceText.slice(0,-2);
+    }
+//SELECT STATEMENT
+    else if (choice == select) {
+  //Display window alert if user clicks Select
+      alert("Invalid selection, please try again!");
+      }
+};
+   
+       </script>
+
+    </body>
+
+</html>
