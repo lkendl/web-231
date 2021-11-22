@@ -105,6 +105,7 @@ document.getElementById("btnDisplaySequence").onclick = function sequenceGame() 
     let select = document.getElementById("select").value;
 
 //EVEN DO/WHILE LOOP | Compare user input and against string values with if/else statements
+//Expected output: "2, 4, 6, 8, 10, 12, 14, 16, 18"
     if (choice == even) {
 //Define variable to display While loop results
         let evenText = "";
@@ -120,6 +121,7 @@ document.getElementById("btnDisplaySequence").onclick = function sequenceGame() 
         document.getElementById("results").innerHTML = evenText.slice(0,-2);
     }
 //ODD FOR LOOP
+//Expected output: "1, 3, 5, 7, 9, 11, 13, 15, 17, 19"
     else if (choice == odd) {
 //Define variable to display For loop results
         let oddText = "";
@@ -133,6 +135,7 @@ document.getElementById("btnDisplaySequence").onclick = function sequenceGame() 
     }
 }
 //FIBONACCI WHILE LOOP
+//Expected output: "1, 3, 5, 7, 9, 11, 13, 15, 17, 19"
     else if (choice == fibonacci) {  
 //Define variable to display While loop results
         let fibonacciSequenceText = "";
