@@ -1,0 +1,236 @@
+<!--
+============================================
+; Title: Assignment 6.2
+; Author: Professor Krasso 
+; Date: 21 November 2021
+; Modified By: Laura Kendl
+; Description: This application demonstrates 
+; how to use JavaScript object literals by
+; creating an application called In-N-Out-Books.
+; Resources: 
+; W3Schools: https://www.w3schools.com/js/tryit.asp?filename=tryjs_objects_object (Object Literal Properties)
+; W3Schools: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_style_display (Style.display)
+; JavaScript Tutorial: https://www.javascripttutorial.net/javascript-dom/javascript-select-box/ (JS Option Select)
+; W3Schools: https://www.w3schools.com/html/html_tables.asp (HTML Tables)
+; Mozilla: https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model/Traversing_an_HTML_table_with_JavaScript_and_DOM_Interfaces (Traversing an HTML table with JavaScript and DOM Interfaces)
+; Stack Overflow: https://stackoverflow.com/questions/17684201/create-html-table-from-javascript-object/17684427 (Create HTML table from JavaScript)
+;===========================================
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>WEB 231 - Enterprise JavaScript I</title>
+
+        <!-- Link to External Stylesheet -->
+
+        <link rel="stylesheet" type="text/css" href="../global.css">
+
+        <link rel="stylesheet" type="text/css" href="Kendl-in-n-out-books.css">
+
+        <!-- Google Font Kit for Oswald -->
+
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <div id="container">
+
+            <h1 class="app-header">Welcome to In-N-Out Books</h1>
+
+            <div id="card-example">
+                <div class="card">
+                    <div class="card-title">My Favorites</div>
+                        <div class="card-content">
+                            <div class="form">
+                                <div class="form-field">
+                            
+                                    <label for="favoriteList">Choose a listing:</label>
+                                    
+                                    <select id="favoriteList" name="favoriteList" class="drop-down-menu">
+                                        <option id="select" value="select">--Select--</option>
+                                        <option id="books" value="books">Top 3 Favorite Books</option>
+                                        <option id="authors" value="authors">Top 3 Favorite Authors</option>
+                                    </select>                       
+                                
+
+                                <div class="form-field">
+                                <!--Register onclick event-->
+                                    <button type="submit" id="btnDisplayListing" onclick="function displayListings()" class="btn btn-primary full-width">Display Listing</button>
+                                </div>                         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p>
+                <a href="../index.html" class="return-home">Return</a>
+            </p>
+
+<!-- Favorite Books HTML Table -->
+            <div id="favorite-books">
+                <div class="card">
+                    <div class="card-title">Top 3 Favorite Books</div>
+                    <div class="card-content" id="books-container">
+                        <table id="booksTable">
+                            <tr>
+                                <th>ISBN</th>
+                                <th>Title</th>
+                                <th>Pages</th>
+                            </tr>
+                            <tr>
+                                <td id="isbnOne"></td>
+                                <td id="titleOne"></td>
+                                <td id="pagesOne"></td>
+                            </tr>
+                            <tr>
+                                <td id="isbnTwo"></td>
+                                <td id="titleTwo"></td>
+                                <td id="pagesTwo"></td>
+                            </tr>
+                            <tr>
+                                <td id="isbnThree"></td>
+                                <td id="titleThree"></td>
+                                <td id="pagesThree"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+<!-- Favorite Authors HTML Table -->
+            <div id="favorite-authors">
+                <div class="card">
+                    <div class="card-title">Top 3 Favorite Authors</div>
+                    <div class="card-content" id="authors-container">
+                        <table id="authorsTable">
+                            <tr>
+                                <th>Name</th>
+                                <th>Genre</th>
+                            </tr>
+                            <tr>
+                                <td id="nameOne"></td>
+                                <td id="genreOne"></td>
+                            </tr>
+                            <tr>
+                                <td id="nameTwo"></td>
+                                <td id="genreTwo"></td>
+                            </tr>
+                            <tr>
+                                <td id="nameThree"></td>
+                                <td id="genreThree"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- Internal JS -->
+    <script>
+
+//-- HTML TABLE DIVS --// 
+//Define variable and display properties for associated DIV
+    let books = document.getElementById("favorite-books");
+//Hide DIV on default
+        books.style.display = "none";
+//Define variable and display properties for associated DIV
+    let authors = document.getElementById("favorite-authors");
+//Hide DIV on default
+        authors.style.display = "none";
+
+//-- HTML TABLE VALUES --//
+//Define variables and its properties for favorite books
+    const bookOne = {
+        isbn: 1435144821, 
+        title: "Fairy Tales from Around the World", 
+        pages: 736
+    };
+
+    const bookTwo = {
+        isbn: 1683837983, 
+        title: "Star Wars: Galaxy's Edge: The Official Black Spire Outpost Cookbook", 
+        pages: 176
+    };
+
+    const bookThree = {
+        isbn: 1435140370, 
+        title: "Great Tales of Horror", 
+        pages: 600
+    };
+
+//Define variables and its properties for favorite authors
+    const authorOne = {
+        name: "H.P. Lovecraft", 
+        genre: "Horror"
+    };
+
+    const authorTwo = {
+        name: "Molly Yeh", 
+        genre: "Cooking Non-Fiction"
+    };
+
+    const authorThree = {
+        name: "Giada De Laurentiis", 
+        genre: "Cooking Non-Fiction"
+    };
+
+//Assign table variables and to HTML table cells
+    document.getElementById("isbnOne").innerHTML= bookOne.isbn;
+    document.getElementById("isbnTwo").innerHTML= bookTwo.isbn;
+    document.getElementById("isbnThree").innerHTML= bookThree.isbn;
+    document.getElementById("titleOne").innerHTML= bookOne.title;
+    document.getElementById("titleTwo").innerHTML= bookTwo.title;
+    document.getElementById("titleThree").innerHTML= bookThree.title;
+    document.getElementById("pagesOne").innerHTML= bookOne.pages;
+    document.getElementById("pagesTwo").innerHTML= bookTwo.pages;
+    document.getElementById("pagesThree").innerHTML= bookThree.pages;
+    document.getElementById("nameOne").innerHTML= authorOne.name;
+    document.getElementById("nameTwo").innerHTML= authorTwo.name;
+    document.getElementById("nameThree").innerHTML= authorThree.name;
+    document.getElementById("genreOne").innerHTML= authorOne.genre;
+    document.getElementById("genreTwo").innerHTML= authorTwo.genre;
+    document.getElementById("genreThree").innerHTML= authorThree.genre;
+
+//-- HTML TABLES FUNCTION --//
+//Bind displayListings function when user clicks btnDisplaySequence
+    document.getElementById("btnDisplayListing").onclick = function displayListings() {
+
+//Define variable for user input options
+        let choice = document.getElementById("favoriteList").value; 
+ 
+//-- IF...ELSE IF... ELSE --//
+
+//If statement for "books" choice
+        if (choice == "books") {
+//Set books table visible and hide authors table
+            books.style.display = "block";
+            authors.style.display = "none";
+        }
+      
+//Else If statement for "authors" choice
+        else if (choice == "authors") {
+//Set authors table visible and hide books table
+            authors.style.display = "block";
+            books.style.display = "none";
+        }  
+
+//Else statement for "select" choice
+        else {
+//Hide books and authors table
+            authors.style.display = "none";
+            books.style.display = "none";
+        }
+};
+   
+       </script>
+
+    </body>
+
+</html>
