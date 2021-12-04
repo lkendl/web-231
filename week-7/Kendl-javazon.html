@@ -1,0 +1,390 @@
+<!--
+============================================
+; Title: Assignment 7.2
+; Author: Professor Krasso 
+; Date: 3 December 2021
+; Modified By: Laura Kendl
+; Description: This application demonstrates 
+; how to classes in a JavaScript program.; creating an application called In-N-Out-Books.
+; Resources: 
+; W3Schools: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_tofixed (Setting decimal placement to two)
+; Mozilla: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes (Create Objects)
+; W3Schools: https://www.w3schools.com/js/js_switch.asp (Switch Statement)
+;===========================================
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>WEB 231 - Enterprise JavaScript I</title>
+
+        <!-- Link to External Stylesheet -->
+
+        <link rel="stylesheet" type="text/css" href="../global.css">
+
+        <link rel="stylesheet" type="text/css" href="Kendl-javazon.css">
+
+        <!-- Google Font Kit for Oswald -->
+
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <div id="container">
+
+            <h1 class="app-header">Welcome to the Javazon App!</h1>
+
+            <div id="card-example">
+                <div class="card">
+                    <div class="card-title">Javazon Selection Form</div>
+                        <div class="card-content">
+                            <div class="form">
+                                <div class="form-field">   
+                                    <label for="selectList">Choose a listing</label>
+                                        <select id="selectList" name="drop-down-menu" class="drop-down-menu">
+                                            <option id="selectSelect" value="select">--Select--</option>
+                                            <option id="productsSelect" value="products">Products</option>
+                                            <option id="servicesSelect" value="services">Services</option>
+                                            <option id="employeesSelect" value="employees">Employees</option>
+                                    </select>                       
+                                
+
+                                <div class="form-field">
+                                <!--Register onclick event-->
+                                    <button id="btnDisplayListing" class="btn btn-primary full-width">Display Listing</button>
+                                </div>                         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            <p>
+                <a href="../index.html" class="return-home">Return</a>
+            </p>
+
+<!-- Products HTML Table -->
+            <div id="products">
+                <div class="card">
+                    <div class="card-title">Javazon Products</div>
+                    <div class="card-content">
+                        <table id="productsTable">
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Total Value</th>
+                            </tr>
+                            <tr>
+                                <td id="txtProductIdOne"></td>
+                                <td id="txtProductDescriptionOne"></td>
+                                <td id="txtProductPriceOne"></td>
+                                <td id="txtProductQuantityOne"></td>
+                                <td id="txtProductTotalValueOne"></td>
+                            </tr>
+                            <tr>
+                                <td id="txtProductIdTwo"></td>
+                                <td id="txtProductDescriptionTwo"></td>
+                                <td id="txtProductPriceTwo"></td>
+                                <td id="txtProductQuantityTwo"></td>
+                                <td id="txtProductTotalValueTwo"></td>
+                            </tr>
+                            <tr>
+                                <td id="txtProductIdThree"></td>
+                                <td id="txtProductDescriptionThree"></td>
+                                <td id="txtProductPriceThree"></td>
+                                <td id="txtProductQuantityThree"></td>
+                                <td id="txtProductTotalValueThree"></td>
+                            </tr>
+                            <tr>
+                                <td id="txtProductIdFour"></td>
+                                <td id="txtProductDescriptionFour"></td>
+                                <td id="txtProductPriceFour"></td>
+                                <td id="txtProductQuantityFour"></td>
+                                <td id="txtProductTotalValueFour"></td>
+                            </tr>
+                            <tr>
+                                <td id="txtProductIdFive"></td>
+                                <td id="txtProductDescriptionFive"></td>
+                                <td id="txtProductPriceFive"></td>
+                                <td id="txtProductQuantityFive"></td>
+                                <td id="txtProductTotalValueFive"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+<!-- Services HTML Table -->
+            <div id="services">
+                <div class="card">
+                    <div class="card-title">Javazon Services</div>
+                    <div class="card-content">
+                        <table id="servicesTable">
+                            <tr>
+                                <th>Service ID</th>
+                                <th>Description</th>
+                                <th>Hourly Rate</th>
+                                <th>Minimum Billable Hours</th>
+                            </tr>
+                            <tr>
+                                <td id="txtServiceIdOne"></td>
+                                <td id="txtServiceDescriptionOne"></td>
+                                <td id="txtServiceHourlyRateOne"></td>
+                                <td id="txtServiceMinBillHoursOne"></td>
+                            </tr>
+                            <tr>
+                                <td id="txtServiceIdTwo"></td>
+                                <td id="txtServiceDescriptionTwo"></td>
+                                <td id="txtServiceHourlyRateTwo"></td>
+                                <td id="txtServiceMinBillHoursTwo"></td>
+                            </tr>
+                            <tr>
+                                <td id="txtServiceIdThree"></td>
+                                <td id="txtServiceDescriptionThree"></td>
+                                <td id="txtServiceHourlyRateThree"></td>
+                                <td id="txtServiceMinBillHoursThree"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+<!-- Employees HTML Table -->
+            <div id="employees">
+                <div class="card">
+                    <div class="card-title">Javazon Employees</div>
+                    <div class="card-content">
+                        <table id="employeesTable">
+                            <tr>
+                                <th>Employee ID</th>
+                                <th>Last Name</th>
+                                <th>First Name</th>
+                                <th>Salary</th>
+                            </tr>
+                            <tr>
+                                <td id="txtEmployeeIdOne"></td>
+                                <td id="txtEmployeeLastOne"></td>
+                                <td id="txtEmployeeFirstOne"></td>
+                                <td id="txtEmployeeSalaryOne"></td>
+                            </tr>
+                            <tr>
+                                <td id="txtEmployeeIdTwo"></td>
+                                <td id="txtEmployeeLastTwo"></td>
+                                <td id="txtEmployeeFirstTwo"></td>
+                                <td id="txtEmployeeSalaryTwo"></td>
+                            </tr>
+                            <tr>
+                                <td id="txtEmployeeIdThree"></td>
+                                <td id="txtEmployeeLastThree"></td>
+                                <td id="txtEmployeeFirstThree"></td>
+                                <td id="txtEmployeeSalaryThree"></td>
+                            </tr>
+                            <tr>
+                                <td id="txtEmployeeIdFour"></td>
+                                <td id="txtEmployeeLastFour"></td>
+                                <td id="txtEmployeeFirstFour"></td>
+                                <td id="txtEmployeeSalaryFour"></td>
+                            </tr>
+                            <tr>
+                                <td id="txtEmployeeIdFive"></td>
+                                <td id="txtEmployeeLastFive"></td>
+                                <td id="txtEmployeeFirstFive"></td>
+                                <td id="txtEmployeeSalaryFive"></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+<!-- Internal JS -->
+    <script>
+
+//-- CLASSES --//
+
+//Define Product class and the constructor of how the object is initialized
+class Product {
+    constructor(id, description, price, quantity) {
+    this.id = id;
+    this.description = description;
+    this.quantity = quantity;
+    this.price = price.toFixed(2);
+    this.totalValue = (this.quantity * this.price).toFixed(2);
+    }
+}
+//Define Services class and the constructor of how the object is initialized
+class Service {
+    constructor(id, description, hourlyRate, min) {
+    this.id = id;
+    this.description = description;
+    this.hourlyRate = hourlyRate.toFixed(2);
+    this.min = min;
+    }
+}
+
+//Define Employee class and the constructor of how the object is initialized
+class Employee {
+    constructor(id, firstName, lastName, salary) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.salary = salary.toFixed(2);
+    }
+}
+
+//-- OBJECTS --//
+//Create new Product objects and assign to variables
+    let productOne = new Product("9781118008188", "HTML and CSS: Design and Build Websites", 22.26, 10);
+    let productTwo = new Product("9781491952023", "JavaScript: The Definitive Guide 7/E", 41.33, 7);
+    let productThree = new Product("9781449331818", "Learning JavaScript Design Patterns 1/E", 25.99, 3);
+    let productFour = new Product("9781617292422", "Express in Action: Writing, building, and testing Node.js applications 1/E", 34.91, 3);
+    let productFive = new Product("9781491954461", "MongoDB The Definitive Guide", 33.70, 8);
+
+//Create new Service objects and assign to variables
+    let serviceOne = new Service("100", "Website Design", 150.00, 25);
+    let serviceTwo = new Service("101", "DevOps Consulting", 125.00, 50);
+    let serviceThree = new Service("102", "Database Design", 125.00, 15);
+
+//Create new Employee objects and assign to variables
+    let employeeOne = new Employee("1007", "Ludwig", "Beethoven", 13.99);
+    let employeeTwo = new Employee("1008", "Johann", "Bach", 22.30);
+    let employeeThree = new Employee("1009", "Wolfgang", "Mozart", 19.50);
+    let employeeFour = new Employee("1010", "Johannes", "Brahms", 12.00);
+    let employeeFive = new Employee("1011", "Joseph", "Haydn", 32.50);
+
+//Define variables for table DIVs
+    let products = document.getElementById("products");
+        products.style.display = "none";
+    let services = document.getElementById("services");
+        services.style.display = "none";
+    let employees = document.getElementById("employees");
+        employees.style.display = "none";
+
+
+//-- HTML TABLES FUNCTION --//
+//Bind displayListings function when user clicks btnDisplaySequence
+document.getElementById("btnDisplayListing").onclick = function() {
+
+//Define variable for user input options
+    let choice = document.getElementById("selectList").value; 
+
+//-- HTML TABLE VALUES --//
+//Assign Product objects to HTML table cells
+
+    document.getElementById("txtProductIdOne").innerHTML= productOne.id;
+    document.getElementById("txtProductDescriptionOne").innerHTML= productOne.description;
+    document.getElementById("txtProductPriceOne").innerHTML= productOne.price;
+    document.getElementById("txtProductQuantityOne").innerHTML= productOne.quantity;
+    document.getElementById("txtProductTotalValueOne").innerHTML= productOne.totalValue;
+
+    document.getElementById("txtProductIdTwo").innerHTML= productTwo.id;
+    document.getElementById("txtProductDescriptionTwo").innerHTML= productTwo.description;
+    document.getElementById("txtProductPriceTwo").innerHTML= productTwo.price;
+    document.getElementById("txtProductQuantityTwo").innerHTML= productTwo.quantity;
+    document.getElementById("txtProductTotalValueTwo").innerHTML= productTwo.totalValue;
+
+    document.getElementById("txtProductIdThree").innerHTML= productThree.id;
+    document.getElementById("txtProductDescriptionThree").innerHTML= productThree.description;
+    document.getElementById("txtProductPriceThree").innerHTML= productThree.price;
+    document.getElementById("txtProductQuantityThree").innerHTML= productThree.quantity;
+    document.getElementById("txtProductTotalValueThree").innerHTML= productThree.totalValue;
+    
+    document.getElementById("txtProductIdFour").innerHTML= productFour.id;
+    document.getElementById("txtProductDescriptionFour").innerHTML= productFour.description;
+    document.getElementById("txtProductPriceFour").innerHTML= productFour.price;
+    document.getElementById("txtProductQuantityFour").innerHTML= productFour.quantity;
+    document.getElementById("txtProductTotalValueFour").innerHTML= productFour.totalValue;
+
+    document.getElementById("txtProductIdFive").innerHTML= productFive.id;
+    document.getElementById("txtProductDescriptionFive").innerHTML= productFive.description;
+    document.getElementById("txtProductPriceFive").innerHTML= productFive.price;
+    document.getElementById("txtProductQuantityFive").innerHTML= productFive.quantity;
+    document.getElementById("txtProductTotalValueFive").innerHTML= productFive.totalValue;
+
+//Assign Service objects to HTML table cells
+    document.getElementById("txtServiceIdOne").innerHTML= serviceOne.id;
+    document.getElementById("txtServiceDescriptionOne").innerHTML= serviceOne.description;
+    document.getElementById("txtServiceHourlyRateOne").innerHTML= serviceOne.hourlyRate;
+    document.getElementById("txtServiceMinBillHoursOne").innerHTML= serviceOne.min;
+
+    document.getElementById("txtServiceIdTwo").innerHTML= serviceTwo.id;
+    document.getElementById("txtServiceDescriptionTwo").innerHTML= serviceTwo.description;
+    document.getElementById("txtServiceHourlyRateTwo").innerHTML= serviceTwo.hourlyRate;
+    document.getElementById("txtServiceMinBillHoursTwo").innerHTML= serviceTwo.min;
+
+    document.getElementById("txtServiceIdThree").innerHTML= serviceThree.id;
+    document.getElementById("txtServiceDescriptionThree").innerHTML= serviceThree.description;
+    document.getElementById("txtServiceHourlyRateThree").innerHTML= serviceThree.hourlyRate;
+    document.getElementById("txtServiceMinBillHoursThree").innerHTML= serviceThree.min;
+
+//Assign Employee objects to HTML table cells
+    document.getElementById("txtEmployeeIdOne").innerHTML= employeeOne.id;
+    document.getElementById("txtEmployeeLastOne").innerHTML= employeeOne.lastName;
+    document.getElementById("txtEmployeeFirstOne").innerHTML= employeeOne.firstName;
+    document.getElementById("txtEmployeeSalaryOne").innerHTML= employeeOne.salary;  
+    
+    document.getElementById("txtEmployeeIdTwo").innerHTML= employeeTwo.id;
+    document.getElementById("txtEmployeeLastTwo").innerHTML= employeeTwo.lastName;
+    document.getElementById("txtEmployeeFirstTwo").innerHTML= employeeTwo.firstName;
+    document.getElementById("txtEmployeeSalaryTwo").innerHTML= employeeTwo.salary;  
+
+    document.getElementById("txtEmployeeIdThree").innerHTML= employeeThree.id;
+    document.getElementById("txtEmployeeLastThree").innerHTML= employeeThree.lastName;
+    document.getElementById("txtEmployeeFirstThree").innerHTML= employeeThree.firstName;
+    document.getElementById("txtEmployeeSalaryThree").innerHTML= employeeThree.salary;  
+
+    document.getElementById("txtEmployeeIdFour").innerHTML= employeeFour.id;
+    document.getElementById("txtEmployeeLastFour").innerHTML= employeeFour.lastName;
+    document.getElementById("txtEmployeeFirstFour").innerHTML= employeeFour.firstName;
+    document.getElementById("txtEmployeeSalaryFour").innerHTML= employeeFour.salary;  
+
+    document.getElementById("txtEmployeeIdFive").innerHTML= employeeFive.id;
+    document.getElementById("txtEmployeeLastFive").innerHTML= employeeFive.lastName;
+    document.getElementById("txtEmployeeFirstFive").innerHTML= employeeFive.firstName;
+    document.getElementById("txtEmployeeSalaryFive").innerHTML= employeeFive.salary;  
+
+//-- SWITCH STATEMENT --//
+   
+        switch(choice) {
+
+            case "products": 
+                products.style.display = "block";
+                services.style.display = "none";
+                employees.style.display = "none";
+            break;
+
+            case "services":
+                products.style.display = "none";
+                services.style.display = "block";
+                employees.style.display = "none";
+            break;
+
+            case "employees":
+                products.style.display = "none";
+                services.style.display = "none";
+                employees.style.display = "block";
+            break;
+
+            default:
+                products.style.display = "none";
+                services.style.display = "none";
+                employees.style.display = "none";
+        }
+    };
+
+   
+       </script>
+
+    </body>
+
+</html>

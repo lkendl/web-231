@@ -1,0 +1,58 @@
+/*
+============================================
+; Title: Kendl-in-n-out-books.css
+; Author: Professor Krasso 
+; Date: 19 November 2021
+; Modified By: Laura Kendl
+; Description: This is the css for
+; the In-N-Out-Books assignment.
+;===========================================
+*/
+#container {
+    padding: 10px;
+}
+
+#form-example {
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+#form-results-example {
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+.app-header {
+    text-align: center;
+    font-size: 28px;
+}
+
+#results {
+    text-align: center;
+    font-size: 28px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4F3674;
+    color: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+}
+
+
+tr:hover {
+    background-color: #D6A800;
+    color: #4F3674;
+    cursor: pointer;
+}
