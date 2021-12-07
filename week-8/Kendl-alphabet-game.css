@@ -1,0 +1,71 @@
+/*
+============================================
+; Title: Kendl-alphabet-game.css
+; Author: Professor Krasso 
+; Date: 6 December 2021
+; Modified By: Laura Kendl
+; Description: This is the css for
+; the Alphabet Game assignment.
+;===========================================
+*/
+#container {
+    padding: 10px;
+}
+
+#form-example {
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+#form-results-example {
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+.app-header {
+    text-align: center;
+    font-size: 28px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4F3674;
+    color: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+}
+
+
+tr:hover {
+    background-color: #D6A800;
+    color: #4F3674;
+    cursor: pointer;
+}
+
+/* CSS for Assignment 8.2 */
+
+#results {
+    text-align: center;
+}
+
+#alphabetletters {
+    text-align: center;
+}
+
+.card-content {
+    font-size: 28px;
+}
+
+.alphabet-label {
+    font-size: 16px;
+}

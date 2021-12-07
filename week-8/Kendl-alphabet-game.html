@@ -1,0 +1,135 @@
+<!--
+============================================
+; Title: Assignment 8.2
+; Author: Professor Krasso 
+; Date: 6 December 2021
+; Modified By: Laura Kendl
+; Description: This application demonstrates 
+; how to use arrays in a JavaScript program by
+; building an application called Alphabet Game.
+; Resources: 
+; W3Schools: https://www.w3schools.com/tags/tag_input.asp (HTML Input tag)
+; W3Schools: https://www.w3schools.com/js/js_arrays.asp (JavaScript Arrays)
+; W3Schools: https://www.w3schools.com/jsref/jsref_forin.asp (JavaScript For/In Statement)
+; Mozilla: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in (For...In)
+; W3Schools: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String (If/Else Statement)
+;===========================================
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>WEB 231 - Enterprise JavaScript I</title>
+
+        <!-- Link to External Stylesheet -->
+
+        <link rel="stylesheet" type="text/css" href="../global.css">
+
+        <link rel="stylesheet" type="text/css" href="Kendl-alphabet-game.css">
+
+        <!-- Google Font Kit for Oswald -->
+
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <div id="container">
+
+            <h1 class="app-header">Welcome to the Alphabet Game!</h1>
+
+            <div id="card-example">
+                <div class="card">
+                    <div class="card-title">Alphabet Number Form</div>
+                        <div class="card-content">
+                            <div class="form">
+                                <div class="form-field">
+                                    <label for="txtPosition" class="alphabet-label">Alphabet Letter Position</label>
+                                    <input type="text" id="txtPosition" name="txtPosition">
+                                </div>
+                                <div class="form-field">
+
+                                    <!--Register onclick event-->
+                                    <button id="btnFindLetter" class="btn btn-primary full-width">Find Letter</button>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+            <p>
+                <a href="../index.html" class="return-home">Return</a>
+            </p>
+
+<!-- Alphabet Array Container -->
+            <div id="alphabetletters">
+                <div class="card">
+                    <div class="card-title">Letters in the Alphabet</div>
+                    <div class="card-content">
+                        <div id="alphabet-array"></div>
+                      </div>
+                </div>
+            </div>
+
+<!-- Results Container -->
+            <div id="results">
+                <div class="card">
+                    <div class="card-title">Results</div>
+                    <div class="card-content">
+                       <div id="alphabet-letter"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Internal JS -->
+    <script>
+
+//-- ALPHABET ARRAY --//
+//Create a character array of all letters in English alphabet and assign to variable alphabet
+const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+
+//Create a string variable named alphabetOutput with default value of an empty string
+let alphabetOutput = "";
+
+//-- FOR/IN LOOP --//
+//Iterate over the alphabet array with alphabetOutput variable with comma
+let x;
+for (x in alphabet) {
+    alphabetOutput += alphabet[x] + ", ";
+}
+
+//Bind the alphabetOutput string to the alphabet DIV and remove trailing comma with slice() operation
+document.getElementById("alphabet-array").innerHTML = alphabetOutput.slice(0, -2);
+
+//Capture entered value and bind to pos when user clicks btnFindLetter
+document.getElementById("btnFindLetter").onclick = function() {
+
+//-- ARRAY FUNCTION --//
+
+//Define variable for user input options
+    let pos = document.getElementById("txtPosition").value; 
+
+//Define variable for alphabet letter in array that matches the entered position 
+/* Note: (pos is the user's input value; Added '-1' from user value to take into account A in the 0 position [i.e., Without using -1, if user inputs 1, array will return B because A=0 and B=1. With -1, if user inputs 1, the value will be 0 (1-1) so the function will select A (A=0)]) */
+   let letter = alphabet[pos -1];
+
+//-- IF...ELSE STATEMENT --//
+//Compare letter against undefined and build a string to alphabet-letter DIV
+    if (letter === undefined) {
+        document.getElementById("alphabet-letter").innerHTML = "There are not " + pos + " letters in the alphabet";
+    }
+//If else, build a string to declare position in alphabet to alphabet-letter DIV
+    else {
+        document.getElementById("alphabet-letter").innerHTML = letter + " is at position " + pos + " in the alphabet";
+    }
+};
+       </script>
+
+    </body>
+
+</html>
