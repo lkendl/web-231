@@ -1,0 +1,39 @@
+/*
+============================================
+; Title: Kendl-card-game.css
+; Author: Professor Krasso 
+; Date: 13 December 2021
+; Modified By: Laura Kendl
+; Description: This is the css for
+; the Card Game final.
+;===========================================
+*/
+#container {
+    padding: 10px;
+}
+
+.app-header {
+    text-align: center;
+    font-size: 28px;
+}
+
+.card-content {
+    font-size: 28px;
+}
+
+.player-card {
+    text-align: center;
+}
+
+#shuffled-card-container {
+    width: 600px;
+    margin: 3% auto 0;
+}
+
+#player-card {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 10px;
+    padding: 10px;
+}
+

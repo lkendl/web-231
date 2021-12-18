@@ -1,0 +1,240 @@
+<!--
+============================================
+; Title: Assignment 8.2
+; Author: Professor Krasso 
+; Date: 6 December 2021
+; Modified By: Laura Kendl
+; Description: This application demonstrates 
+; how to use arrays in a JavaScript program by
+; building an application called Alphabet Game.
+; Resources: 
+; 1. W3Schools: https://www.w3schools.com/js/js_classes.asp (JavaScript Classes)
+; 2. W3Schools: https://www.w3schools.com/js/js_arrays.asp (JavaScript Arrays)
+; 3. W3Schools: https://www.w3schools.com/js/js_functions.asp (JavaScript Functions)
+; 4. W3Schools: https://www.w3schools.com/js/js_loop_for.asp (For Loops)
+; 5. Stack Overflow: https://stackoverflow.com/questions/56116717/trying-to-create-a-deck-of-cards-using-for-loop (Trying to Create a Deck of Cards Using For Loop)
+; 6. W3Schools: https://www.w3schools.com/jsref/jsref_constructor_class.asp (JavaScript Class constructor)
+; 7. Material Design Icons: https://materialdesignicons.com/ (Icons)
+; 8. Material Design Icons- Usage: https://cdn.jsdelivr.net/npm/@mdi/font@5.4.55/ (Icon Usage)
+; 9. Material Design Icons: https://dev.materialdesignicons.com/getting-started/webfont#setup (Webfont- Getting Started)
+; 10. Stack Overflow: https://stackoverflow.com/questions/67002199/javascript-create-div-with-var-inside (Creating DIVs with Back Ticks in JavaScript)
+; 11: W3Schools: https://www.w3schools.com/css/tryit.asp?filename=trycss_howto_inline (Inline CSS)
+;===========================================
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <title>WEB 231 - Enterprise JavaScript I</title>
+
+        <!-- Link to External Stylesheet -->
+
+        <link rel="stylesheet" type="text/css" href="../global.css">
+
+        <link rel="stylesheet" type="text/css" href="Kendl-card-game.css">
+
+         <!-- Link to Icon Kit -->
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
+
+        <!-- Google Font Kit for Oswald -->
+
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <div id="container">
+
+            <h1 class="app-header">Welcome to the Card Game!</h1>
+
+            <div id="card-example">
+                <div class="card">
+                    <div class="card-title">Card Dealer</div>
+                        <div class="card-content">
+                            <!--Register onclick event-->
+                            <button id="btnDealCards" class="btn btn-primary full-width">Deal Cards</button>
+                        </div>
+                </div>
+
+            <p>
+                <a href="../index.html" class="return-home">Return</a>
+            </p>
+
+<!-- Shuffled Cards Container -->
+            <div id="card-container">
+                <div class="card">
+                    <div class="card-title">Shuffled Cards</div>
+                    <div class="card-content" id="player-card">
+                      <!-- Player's Cards Here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Internal JS -->
+    <script>
+
+// Create a Card class with a constructor with parameters for face and suit.
+
+class Card {
+    constructor(face, suit) {
+        this.face = face;
+        this.suit = suit;
+    }
+}
+
+// Create a Dealer class with a constructor with no parameters
+
+class Dealer {
+    constructor() {
+       getDeckOfCards();
+    }
+}
+
+// Create a variable named CARD_COUNT and assign it a default value of 52.
+
+var CARD_COUNT = 52;
+
+// Create a variable named cards and assign it a default value of an empty array.
+
+var cards = [];
+
+// Create a variable named faces and assign it an array of the faces in a card deck.
+
+var faces = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+
+// Create a variable named suits and assign it an array of the suits in a card deck.
+
+var suits = ["Hearts","Diamonds","Clubs","Spades"];
+
+// Create a function named getDeckOfCards with no parameters.
+
+function getDeckOfCards() {
+    
+    // Add a for loop with 52 iterations
+
+    for (let count = 0; count < this.CARD_COUNT; count++) {  //Resource #5
+        this.cards[count] = new Card(this.faces[count % 13], this.suits[Math.floor(count / 13)]);
+
+    } // End 'for'
+
+} // End function getDeckOfCards()
+
+// Create a function named shuffle with no parameters.
+
+function shuffle() {
+                 
+                // Loop with 52 iterations
+                for (let firstCard = 0; firstCard < this.CARD_COUNT; firstCard++) {
+                   
+                    // Find first card in array and assign to variable
+                    let tempCard = this.cards[firstCard]; 
+                   
+                    // Generate random number
+                    let secondCard = Math.floor(Math.random() * this.CARD_COUNT);
+
+                    // Reorder card array by setting the current card to the secondCard and the second card to the tempCard    
+                    this.cards[firstCard] = this.cards[secondCard];
+                    this.cards[secondCard] = tempCard;
+
+    } // End 'for' loop
+
+} // End function shuffle()
+
+// Create a function named buildPlayingCard with four parameters: card, suitIcon, faceColor, and suitColor.
+
+function buildPlayingCard(card, suitIcon, faceColor, suitColor) {
+   
+   //  This function will return a string with the following div format: card > card-title > card-content > span 
+    return `
+
+        <div class="card player-card">
+            
+            <div class="card-title" style="text-align:left; font-size:20px; padding-left:10px; color:${faceColor}">${card.face}
+
+                <div class="card-content" style="font-size:28px; padding-bottom:25px; text-align:center;">
+
+                    <span class="${suitIcon}" style="color:${suitColor}"></span>
+               
+                </div>
+           
+            </div>
+        
+        </div>`;
+
+} // End function buildPlayingCard()
+
+// Register an onclick event for btnDealCards.
+document.getElementById("btnDealCards").onclick = function() {
+
+// Create a new Dealer object.
+    let dealer = new Dealer();
+
+// Call the shuffle() function.
+    shuffle(dealer);
+
+// Create a string variable named cardOutputWithIcon and give it a default value of an empty string. 
+
+    let cardOutputWithIcon = "";
+
+// Using a for/of loop, iterate over the cards array
+
+    for(let card of cards) {
+
+// Use a switch expression on the suit to compare the suit against the string values: Hearts, Diamonds, Clubs, Spades.
+
+        switch(card.suit) {
+
+// For “Hearts,” call the buildPlayerCard function passing in the card object, the heart icon class (mdi, mdi-heart), the string value red, and the string value red. 
+
+            case "Hearts":
+                cardOutputWithIcon += buildPlayingCard(card, "mdi mdi-heart", "red", "red");
+                break; 
+// Assign the results to cardOutputWithIcon string. (Exhibit D, #1).
+
+
+// For “Diamonds,” call the buildPlayerCard function passing in the card object, the diamond icon class (mdi, mdi-cards-diamonds), the string value red, and the string value red. 
+            case "Diamonds":
+                cardOutputWithIcon += buildPlayingCard(card, "mdi mdi-diamond", "red", "red");
+                break;
+
+// Assign the results to the cardOutputWithIcon string (Exhibit D, #1).
+
+
+// For “Clubs,” call the buildPlayerCard function passing in the card object, the club icon class (mdi mid-cards-club), the string value black, and the string value black. 
+
+            case "Clubs":
+                    cardOutputWithIcon += buildPlayingCard(card, "mdi mdi-cards-club", "black", "black");
+                    break;
+
+// Assign the results to the cardOutputWithIcon string (Exhibit D, #1).
+
+// For “Spades,” call the buildPlayerCard function passing in the card object, the spade icon class (mdi mid-card-spade), the string value black, and the string value black. Assign the results to the cardOutputWithIcon string (Exhibit D, #2). 
+
+            case "Spades":
+                    cardOutputWithIcon += buildPlayingCard(card, "mdi mdi-cards-spade", "black", "black");
+                    break;
+            default:
+
+    } // End of 'switch'
+
+} // End of 'for' loop
+            
+// Assign the results to the cardOutputWithIcon string.
+// Outside of the body of the for/in bind the cardOutputWithIcon to the player-card-container div.
+
+document.getElementById("player-card").innerHTML = cardOutputWithIcon;
+
+};
+
+       </script>
+
+    </body>
+
+</html>
